@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'TasksController@index');
+Route::get('/', 'TasksController@index')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/task','TasksController@add');
-Route::post('/task','TasksController@create');
+Route::get('/task','TasksController@add')->middleware('auth');
+Route::post('/task','TasksController@create')->middleware('auth');
 
-Route::get('/task/{task}','TasksController@edit');
-Route::post('/task/{task}','TasksController@update');
+Route::get('/task/{task}','TasksController@edit')->middleware('auth');
+Route::post('/task/{task}','TasksController@update')->middleware('auth');
 
 
